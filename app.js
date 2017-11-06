@@ -10,7 +10,7 @@ app.use((req, res, next) => {
     next();
 })
 app.get('/', (req, res, next) => {
-    res.send('hiiiii there!!!!')
+    res.send('hiiiii thereeeee!!!!')
     next();
 });
 app.post('/modernism', (req, res, next) => {
