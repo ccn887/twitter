@@ -40,6 +40,9 @@ body {
 code {
   font-size: 80%;
 }
+li {
+  color: blue
+}
 
 .tweetbox {
   padding: 7px;

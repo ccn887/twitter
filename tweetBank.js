@@ -1,9 +1,11 @@
 const _ = require('lodash');
 
 var data = [];
-
+var idNum = 0
 function add (name, content) {
-  data.push({ name: name, content: content });
+  idNum++
+  var idstr = idNum.toString()
+  data.push({ name: name, content: content, id: idstr });
 }
 
 function list () {
@@ -39,6 +41,6 @@ for (let i = 0; i < 10; i++) {
 
 // var list = list();
 
-// data.push({name: 'Joey Jordan', content: 'I love Nunjucks', animal: 'dog'})
+data.push({name: 'JoeyJordan', content: 'I love Nunjucks', animal: 'dog'})
 
 // console.log(find('animal'));
