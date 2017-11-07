@@ -2,23 +2,21 @@ const express = require('express');
 const nunjucks  = require('nunjucks')
 const volleyball  = require('volleyball')
 const chalk  = require('chalk')
+const routes = require('./routes');
 const app = express();
 const PORT = 3000
 app.listen(PORT, () => {
     console.log('listening on port 3000')
 })
+
 app.use(volleyball)
+app.use('/', routes);
 app.use((req, res, next) => {
-    console.log(req.method + ' ' + req.path)
     next();
 })
-app.get('/', (req, res, next) => {
-    res.send('hiiiii thereeeee!!!!')
-    next();
-});
-app.post('/modernism', (req, res, next) => {
-    res.send('post request to modernism')
-})
+
+app.use('/', express.static('public'));
+
 var locals = {
     title: 'Lord of the Nunjucks',
     people: [
@@ -36,9 +34,9 @@ nunjucks.configure('views', {noCache: true})
 //     console.log(locals)
 // });
 
-app.get('/views/index.html', (req, res) => {
-    res.render('index', locals);
-})
+// app.get('/views/index.html', (req, res) => {
+//     res.render('index', locals);
+// })
 
 
 // nunjucks.configure('/', {
