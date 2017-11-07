@@ -35,5 +35,10 @@ router.post('/tweets', function(req, res) {
   res.redirect('/');
 });
 
-
-module.exports = router;
+module.exports = function (io) {
+  // ...
+  io.sockets.emit('newTweet', { /* tweet info */ });
+  // ...
+  return router;
+};
+//module.exports = router;

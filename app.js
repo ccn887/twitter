@@ -6,12 +6,16 @@ const routes = require('./routes');
 const app = express();
 const PORT = 3000
 
-app.listen(PORT, () => {
-    console.log('listening on port 3000')
-})
+// app.listen(PORT, () => {
+//     console.log('listening on port 3000')
+// })
+var socketio = require('socket.io');
+// ...
+var server = app.listen(PORT);
+var io = socketio.listen(server)
 
 app.use(volleyball)
-app.use('/', routes);
+app.use('/', routes(io));
 app.use((req, res, next) => {
     next();
 })
